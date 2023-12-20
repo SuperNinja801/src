@@ -53,7 +53,7 @@ if __name__ == '__main__':
         label=draw(client,i,dir)
         time.sleep(1)
         #打标签
-        print(label)
+        # print(label)
         # ser.write([0])
         # time.sleep(0.001)
         # if label<0.3:
