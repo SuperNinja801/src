@@ -68,6 +68,7 @@ if __name__ == '__main__':
         if n==1:
             client.moveToZAsync(nextHight,10).join()
         else:
+            print('done')
             time.sleep(1.5)
             draw_mode2(client,i,dir)
 
