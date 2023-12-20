@@ -70,7 +70,7 @@ if __name__ == '__main__':
         else:
             time.sleep(1.5)
             draw_mode2(client,i,dir)
-            print("done")
+
         time.sleep(3)
     client.reset()
 
