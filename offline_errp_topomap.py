@@ -7,9 +7,9 @@ evoked_correct = []
 evoked_error = []
 n_block = 3
 file_path = "E:\eeg_data\\2023_12"
-for idx_block in range(2, n_block + 1):
+for idx_block in range(1, n_block + 1):
     # Load data
-    data_path = os.path.join(file_path, "1215-{}.cnt".format(idx_block))
+    data_path = os.path.join(file_path, "1226-{}.cnt".format(idx_block))
     raw = mne.io.read_raw_cnt(data_path, eog=['HEO', 'VEO'], emg=['EMG'], ecg=['EKG'],
                               preload=True, verbose=False)
     raw.drop_channels(['M1', 'M2'])
