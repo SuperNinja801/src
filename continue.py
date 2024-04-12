@@ -34,22 +34,22 @@ while True:
     original_ball_pos = ball_pos.copy()
 
     if label == 1:
-        target_pos = [ball_pos[0] + GRID_SIZE, ball_pos[1]]
+        target_pos = [ball_pos[0] + 2*GRID_SIZE, ball_pos[1]]
         # 边界检查
         if target_pos[0] > WINDOW_SIZE[0]:
             target_pos[0] = WINDOW_SIZE[0]
     elif label == 2:
-        target_pos = [ball_pos[0] - GRID_SIZE, ball_pos[1]]
+        target_pos = [ball_pos[0] - 2*GRID_SIZE, ball_pos[1]]
         # 边界检查
         if target_pos[0] < 0:
             target_pos[0] = 0
     elif label == 3:
-        target_pos = [ball_pos[0], ball_pos[1] - GRID_SIZE]
+        target_pos = [ball_pos[0], ball_pos[1] - 2*GRID_SIZE]
         # 边界检查
         if target_pos[1] < 0:
             target_pos[1] = 0
     elif label == 4:
-        target_pos = [ball_pos[0], ball_pos[1] + GRID_SIZE]
+        target_pos = [ball_pos[0], ball_pos[1] + 2*GRID_SIZE]
         # 边界检查
         if target_pos[1] > WINDOW_SIZE[1]:
             target_pos[1] = WINDOW_SIZE[1]

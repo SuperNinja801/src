@@ -5,11 +5,12 @@ import matplotlib.pyplot as plt
 
 evoked_correct = []
 evoked_error = []
-n_block = 3
-file_path = "E:\eeg_data\\2023_12"
-for idx_block in range(1, n_block + 1):
+n_block = 8
+file_path = "F:\\eeg_data\\2024_4"
+for idx_block in range(1, n_block):
     # Load data
-    data_path = os.path.join(file_path, "1226-{}.cnt".format(idx_block))
+    data_path = os.path.join(file_path, "2024-4-11-{}.cnt".format(idx_block))
+    print(data_path)
     raw = mne.io.read_raw_cnt(data_path, eog=['HEO', 'VEO'], emg=['EMG'], ecg=['EKG'],
                               preload=True, verbose=False)
     raw.drop_channels(['M1', 'M2'])
@@ -17,10 +18,10 @@ for idx_block in range(1, n_block + 1):
     print(chan_names)
     # Rereference
 
-    raw.set_eeg_reference(ref_channels='average')
-    # raw.set_eeg_reference(ref_channels=['TP7', 'TP8'])
+    # raw.set_eeg_reference(ref_channels='average')
+    raw.set_eeg_reference(ref_channels=['TP7', 'TP8'])
     # Bandpass Filter
-    raw = raw.filter(l_freq=1, h_freq=10, method='iir')
+    raw = raw.filter(l_freq=1, h_freq=9, method='iir')
 
     # Epochs
     events, event_id = mne.events_from_annotations(raw, event_id={'1': 1, '2': 2})
@@ -30,9 +31,9 @@ for idx_block in range(1, n_block + 1):
                         )
     epochs = epochs.get_data()
 
-    idx_error = np.where(events[:, -1] == 1)[0]
-    # 错误是1
-    idx_correct = np.where(events[:, -1] == 2)[0]
+    idx_error = np.where(events[:, -1] == 2)[0]
+    # 4.7实验错误是2
+    idx_correct = np.where(events[:, -1] == 1)[0]
     # idx_correct = np.setdiff1d(idx_correct, idx_error+1)
     # idx_correct = np.setdiff1d(idx_correct, idx_error-1)
     # idx_correct = np.setdiff1d(idx_correct, [30*i for i in range(12)])
